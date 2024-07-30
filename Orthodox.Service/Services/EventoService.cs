@@ -12,11 +12,11 @@ namespace Orthodox.Service.Services
     public class EventoService
     {
         // Inyección de Dependecias
-        private readonly CalendarioDbContext _calendarioDbContext;
+        private readonly OrthodoxDbContext _orthodoxDbContext;
 
-        public EventoService(CalendarioDbContext dbContext)
+        public EventoService(OrthodoxDbContext dbContext)
         {
-            _calendarioDbContext = dbContext;
+            _orthodoxDbContext = dbContext;
         }
 
         // Traducir el día a Español
@@ -26,7 +26,7 @@ namespace Orthodox.Service.Services
         {
             try
             {
-                var eventos = _calendarioDbContext.Eventos.ToList();
+                var eventos = _orthodoxDbContext.Eventos.ToList();
 
                 List<EventoResponse> eventoList = new List<EventoResponse>();
 
@@ -42,6 +42,7 @@ namespace Orthodox.Service.Services
                         DescripcionDia = evento.DescripcionDia,
                         TonoCantico = evento.TonoCantico,
                         GuiaAyuno = evento.GuiaAyuno,
+                        CodigoDeColoresAyuno = evento.CodigoDeColoresAyuno,
                         FiestasLiturgicas = evento.FiestasLiturgicas,
                         SantosCelebrados = evento.SantosCelebrados,
                         GuiaLiturgia = evento.GuiaLiturgia,
@@ -64,7 +65,7 @@ namespace Orthodox.Service.Services
         {
             try
             {
-                var evento = _calendarioDbContext.Eventos
+                var evento = _orthodoxDbContext.Eventos
                     .FirstOrDefault(x => x.Id == id);
 
                 var eventoResponse = new EventoResponse()
@@ -77,6 +78,7 @@ namespace Orthodox.Service.Services
                     DescripcionDia = evento.DescripcionDia,
                     TonoCantico = evento.TonoCantico,
                     GuiaAyuno = evento.GuiaAyuno,
+                    CodigoDeColoresAyuno = evento.CodigoDeColoresAyuno,
                     FiestasLiturgicas = evento.FiestasLiturgicas,
                     SantosCelebrados = evento.SantosCelebrados,
                     GuiaLiturgia = evento.GuiaLiturgia,
@@ -105,6 +107,7 @@ namespace Orthodox.Service.Services
                     DescripcionDia = peticion.DescripcionDia,
                     TonoCantico = peticion.TonoCantico,
                     GuiaAyuno = peticion.GuiaAyuno,
+                    CodigoDeColoresAyuno = peticion.CodigoDeColoresAyuno,
                     FiestasLiturgicas = peticion.FiestasLiturgicas,
                     SantosCelebrados = peticion.SantosCelebrados,
                     GuiaLiturgia = peticion.GuiaLiturgia,
@@ -114,8 +117,8 @@ namespace Orthodox.Service.Services
                     DescripcionIcono = peticion.DescripcionIcono
                 };
 
-                _calendarioDbContext.Eventos.Add(evento);
-                _calendarioDbContext.SaveChanges();
+                _orthodoxDbContext.Eventos.Add(evento);
+                _orthodoxDbContext.SaveChanges();
 
                 return evento;
             }
@@ -129,7 +132,7 @@ namespace Orthodox.Service.Services
         {
             try
             {
-                var evento = _calendarioDbContext.Eventos
+                var evento = _orthodoxDbContext.Eventos
                     .FirstOrDefault(x => x.Id == peticion.Id);
                 
                 evento.FechaInicio = peticion.FechaInicio;
@@ -137,6 +140,7 @@ namespace Orthodox.Service.Services
                 evento.DescripcionDia = peticion.DescripcionDia;
                 evento.TonoCantico = peticion.TonoCantico;
                 evento.GuiaAyuno = peticion.GuiaAyuno;
+                evento.CodigoDeColoresAyuno = peticion.CodigoDeColoresAyuno;
                 evento.FiestasLiturgicas = peticion.FiestasLiturgicas;
                 evento.SantosCelebrados = peticion.SantosCelebrados;
                 evento.GuiaLiturgia = peticion.GuiaLiturgia;
@@ -145,7 +149,7 @@ namespace Orthodox.Service.Services
                 evento.TituloIcono = peticion.TituloIcono;
                 evento.DescripcionIcono = peticion.DescripcionIcono;
 
-                _calendarioDbContext.SaveChanges();
+                _orthodoxDbContext.SaveChanges();
 
                 return evento;
             }
@@ -159,11 +163,11 @@ namespace Orthodox.Service.Services
         {
             try
             {
-                var evento = _calendarioDbContext.Eventos
+                var evento = _orthodoxDbContext.Eventos
                     .FirstOrDefault(x => x.Id == id);
 
-                _calendarioDbContext.Remove(evento);
-                _calendarioDbContext.SaveChanges();
+                _orthodoxDbContext.Remove(evento);
+                _orthodoxDbContext.SaveChanges();
 
                 return evento;
             }

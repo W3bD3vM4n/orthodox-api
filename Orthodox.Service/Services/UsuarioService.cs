@@ -11,18 +11,18 @@ namespace Orthodox.Service.Services
     public class UsuarioService
     {
         // Inyección de Dependecias
-        private readonly CalendarioDbContext _calendarioDbContext;
+        private readonly OrthodoxDbContext _orthodoxDbContext;
 
-        public UsuarioService(CalendarioDbContext dbContext)
+        public UsuarioService(OrthodoxDbContext dbContext)
         {
-            _calendarioDbContext = dbContext;
+            _orthodoxDbContext = dbContext;
         }
 
         public bool ValidarUsuario(UsuarioRequest usuarioRequest)
         {
             try
             {
-                var usuario = _calendarioDbContext.Usuarios
+                var usuario = _orthodoxDbContext.Usuarios
                                                     .FirstOrDefault(x=> x.Nombre == usuarioRequest.Nombre 
                                                                     && x.Contrasena == usuarioRequest.Contrasena);
 

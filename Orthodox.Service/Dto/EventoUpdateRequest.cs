@@ -27,6 +27,9 @@ namespace Orthodox.Service.Dto
         [JsonPropertyName("guiaAyuno")]
         public string GuiaAyuno { get; set; }
 
+        [JsonPropertyName("codigoDeColoresAyuno")]
+        public string? CodigoDeColoresAyuno { get; set; }
+
         [JsonPropertyName("fiestasLiturgicas")]
         public string? FiestasLiturgicas { get; set; }
 

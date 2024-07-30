@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Orthodox.Data.Models
 {
-    public partial class CalendarioDbContext : DbContext
+    public partial class OrthodoxDbContext : DbContext
     {
-        public CalendarioDbContext()
+        public OrthodoxDbContext()
         {
         }
 
-        public CalendarioDbContext(DbContextOptions<CalendarioDbContext> options)
+        public OrthodoxDbContext(DbContextOptions<OrthodoxDbContext> options)
             : base(options)
         {
         }

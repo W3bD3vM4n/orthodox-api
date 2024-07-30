@@ -24,10 +24,10 @@ builder.Services.AddCors(options =>
 });
 
 // Get the connection string from the configuration
-var connectionString = builder.Configuration.GetConnectionString("CalendarioConnection");
+var connectionString = builder.Configuration.GetConnectionString("OrthodoxConnection");
 
 // Configure the DbContext
-builder.Services.AddDbContext<CalendarioDbContext>(options => options
+builder.Services.AddDbContext<OrthodoxDbContext>(options => options
     .UseLazyLoadingProxies()
     .UseSqlServer(connectionString)
 );

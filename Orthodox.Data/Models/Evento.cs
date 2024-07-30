@@ -11,6 +11,7 @@ namespace Orthodox.Data.Models
         public string? DescripcionDia { get; set; }
         public string? TonoCantico { get; set; }
         public string? GuiaAyuno { get; set; }
+        public string? CodigoDeColoresAyuno { get; set; }
         public string? FiestasLiturgicas { get; set; }
         public string? SantosCelebrados { get; set; }
         public string? GuiaLiturgia { get; set; }
