@@ -17,11 +17,15 @@ namespace Orthodox.Data.Models
         }
 
         public virtual DbSet<Evento> Eventos { get; set; } = null!;
+        public virtual DbSet<Cartelera> Carteleras { get; set; } = null!;
+        public virtual DbSet<PensamientoDia> PensamientosDia { get; set; } = null!;
         public virtual DbSet<Usuario> Usuarios { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Evento>().ToTable("Evento", "dbo");
+            modelBuilder.Entity<Cartelera>().ToTable("Cartelera", "dbo");
+            modelBuilder.Entity<PensamientoDia>().ToTable("PensamientoDia", "dbo");
             modelBuilder.Entity<Usuario>().ToTable("Usuario", "dbo");
         }
     }

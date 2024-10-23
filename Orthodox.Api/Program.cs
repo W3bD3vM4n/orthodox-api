@@ -35,6 +35,8 @@ builder.Services.AddDbContext<OrthodoxDbContext>(options => options
 
 // Register of 'Services' with the Dependency Injection container
 builder.Services.AddTransient<EventoService>();
+builder.Services.AddTransient<CarteleraService>();
+builder.Services.AddTransient<PensamientoDiaService>();
 builder.Services.AddTransient<UsuarioService>();
 
 // Ignore JSON circular references
